@@ -1,14 +1,60 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
-  provider = "prisma-client"
-  output   = "../app/generated/prisma"
+  provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Profile {
+  id         String      @id @default(uuid())
+  email      String      @unique
+  name       String?
+  password   String?     // <-- TAMBAHKAN BARIS INI (Opsional karena nanti bisa login pakai Google)
+  created_at DateTime    @default(now())
+  shelves    Shelf[]
+}
+
+model Book {
+  id          String      @id
+  title       String
+  author      String
+  cover_url   String?
+  total_pages Int?
+  shelf_items ShelfItem[] 
+}
+
+model Shelf {
+  id          String      @id @default(uuid())
+  user_id     String
+  name        String
+  description String?     // TAMBAHKAN BARIS INI (Tanda ? berarti opsional)
+  created_at  DateTime    @default(now())
+  user        Profile     @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  items       ShelfItem[] 
+}
+
+model ShelfItem {
+  id         String     @id @default(uuid())
+  shelf_id   String
+  book_id    String
+  status     ReadStatus @default(TO_READ)
+  pages_read Int        @default(0)
+  notes      String?
+  
+  created_at DateTime   @default(now())
+  updated_at DateTime   @updatedAt
+  
+  shelf      Shelf      @relation(fields: [shelf_id], references: [id], onDelete: Cascade)
+  book       Book       @relation(fields: [book_id], references: [id])
+
+  @@unique([shelf_id, book_id])
+}
+
+enum ReadStatus {
+  TO_READ
+  READING
+  FINISHED
 }
