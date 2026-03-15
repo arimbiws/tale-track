@@ -7,8 +7,6 @@ export async function POST(req: Request) {
     const body = await req.json();
     const { id, title, author, cover_url, shelf_id } = body;
 
-    // 1. Simpan/Update buku di tabel Book (Upsert)
-    // Jika buku sudah ada (berdasarkan ID Google), abaikan. Jika belum, buat baru.
     const book = await prisma.book.upsert({
       where: { id: id },
       update: {},
@@ -20,7 +18,6 @@ export async function POST(req: Request) {
       },
     });
 
-    // 2. Tambahkan buku ke dalam Shelf tertentu (shelfItem)
     const shelfItem = await prisma.shelfItem.create({
       data: {
         shelf_id: shelf_id,

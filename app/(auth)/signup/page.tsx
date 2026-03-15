@@ -1,4 +1,4 @@
-"use client"; // Jadikan Client Component
+"use client";
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -14,7 +14,7 @@ export default function SignupPage() {
       toast.error(res.error);
     } else if (res.success) {
       toast.success("Akun berhasil dibuat! Silakan login.");
-      router.push("/login"); // Pindahkan user ke halaman login
+      router.push("/login");
     }
   };
 
@@ -22,7 +22,6 @@ export default function SignupPage() {
     <div className="min-h-screen flex items-center justify-center bg-gray-50/50 px-4 py-8">
       <div className="w-full max-w-md bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
         <div className="p-8 sm:p-10">
-          {/* Logo & Header */}
           <div className="text-center mb-8">
             <Link href="/" className="inline-flex items-center gap-2 mb-6 group">
               <span className="text-3xl bg-primary/10 p-2 rounded-xl group-hover:scale-110 transition-transform">📚</span>
@@ -32,7 +31,6 @@ export default function SignupPage() {
             <p className="text-sm text-gray-500">Buat akun untuk melacak bacaan pertamamu.</p>
           </div>
 
-          {/* Form Daftar */}
           <form action={handleRegister} className="space-y-4">
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-1">Nama Lengkap</label>

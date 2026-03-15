@@ -2,7 +2,6 @@ export default function ContactPage() {
   return (
     <div className="max-w-7xl mx-auto px-6 py-32 min-h-screen">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-        {/* Kolom Informasi Kiri */}
         <div>
           <span className="text-primary font-bold tracking-wider uppercase text-sm mb-4 block">Get In Touch</span>
           <h1 className="font-heading text-5xl md:text-6xl font-bold text-text mb-6 leading-tight">
@@ -29,7 +28,6 @@ export default function ContactPage() {
           </div>
         </div>
 
-        {/* Kolom Form Kanan */}
         <div className="bg-white p-8 md:p-10 rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-gray-100 relative">
           <form className="space-y-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -72,7 +70,6 @@ export default function ContactPage() {
             </button>
           </form>
 
-          {/* Elemen Dekoratif */}
           <div className="absolute -top-6 -right-6 w-12 h-12 bg-accent rounded-full -z-10"></div>
           <div className="absolute -bottom-8 -left-8 w-16 h-16 bg-primary/20 rounded-full -z-10 blur-xl"></div>
         </div>

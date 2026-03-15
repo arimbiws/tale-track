@@ -12,7 +12,7 @@ model Profile {
   id         String      @id @default(uuid())
   email      String      @unique
   name       String?
-  password   String?     // <-- TAMBAHKAN BARIS INI (Opsional karena nanti bisa login pakai Google)
+  password   String?    
   created_at DateTime    @default(now())
   shelves    Shelf[]
 }
@@ -30,7 +30,7 @@ model Shelf {
   id          String      @id @default(uuid())
   user_id     String
   name        String
-  description String?     // TAMBAHKAN BARIS INI (Tanda ? berarti opsional)
+  description String?    
   created_at  DateTime    @default(now())
   user        Profile     @relation(fields: [user_id], references: [id], onDelete: Cascade)
   items       ShelfItem[] 

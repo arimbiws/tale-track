@@ -1,4 +1,3 @@
-// components/SearchForm.tsx
 "use client";
 
 import { useTransition, useState } from "react";
@@ -12,11 +11,7 @@ export default function SearchForm({ initialQuery }: { initialQuery: string }) {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    // Pastikan tidak kosong (meski tombol di-disable, perlindungan ganda)
     if (!inputValue.trim()) return;
-
-    // Arahkan hanya dengan query pencarian, otomatis menghapus genre dan mereset ke page 1
     const url = `/explore?q=${encodeURIComponent(inputValue.trim())}`;
 
     startTransition(() => {
@@ -32,7 +27,7 @@ export default function SearchForm({ initialQuery }: { initialQuery: string }) {
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
         placeholder="Judul, penulis, atau ISBN..."
-        className="flex-1 border border-gray-300 rounded-xl px-4 sm:px-6 py-3 sm:py-4 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 shadow-sm w-full text-gray-800"
+        className="flex-1 border bg-background border-primary/30 rounded-xl px-4 sm:px-6 py-3 sm:py-4 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 shadow-sm w-full text-text"
       />
       <button
         type="submit"

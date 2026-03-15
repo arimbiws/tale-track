@@ -15,7 +15,11 @@
   --color-warning: #f59e0b;
   --color-danger: #ef4444;
 
-  --color-background-gradient: linear-gradient(to bottom, --color-primary, --color-background);
+  --color-background-gradient: linear-gradient(to top, var(--color-primary), var(--color-background));
+}
+
+.bg-background-gradient {
+  background: var(--color-background-gradient);
 }
 
 :root {

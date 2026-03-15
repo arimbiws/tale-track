@@ -1,4 +1,3 @@
-// app/(frontend)/explore/page.tsx
 import { searchBooks } from "@/lib/google-books";
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
@@ -32,12 +31,10 @@ export default async function ExplorePage({ searchParams }: { searchParams: Prom
 
   const genres = ["Fiction", "Romance", "Fantasy", "Mystery", "History", "Science", "Business", "Poetry"];
 
-  // Membiarkan limit halaman maksimal (Google Books max ~1000 items)
   const totalPages = Math.min(Math.ceil(totalItems / 20), 50);
 
   return (
-    // PERBAIKAN: Ubah bg-text menjadi bg-gray-50/50 agar bersih
-    <section className="min-h-screen pb-28 pt-34 md:pt-42 bg-gray-50/50">
+    <section className="min-h-screen pb-28 pt-34 md:pt-38 bg-primary/25">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-10">
           <h1 className="font-heading text-4xl md:text-5xl font-bold mb-4 text-text">Eksplorasi Buku</h1>
