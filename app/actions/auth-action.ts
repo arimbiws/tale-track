@@ -70,26 +70,30 @@ export async function forgotPasswordAction(email: string) {
   try {
     const existingUser = await prisma.profile.findUnique({ where: { email } });
 
-    if (!existingUser || !existingUser.password) {
-      console.log("Email tidak ditemukan atau login via Google:", email);
-      return { success: true };
+    if (!existingUser) {
+      return { error: "Email is not registered in system." };
+    }
+
+    if (!existingUser.password) {
+      return { error: "This account uses Google Sign-In. Please log in with Google." };
     }
 
     const token = uuidv4();
-    const expires = new Date(new Date().getTime() + 3600 * 1000);
+    const expires = new Date(new Date().getTime() + 3600 * 1000); // 1 hour expiration
 
     await prisma.passwordResetToken.deleteMany({ where: { email } });
     await prisma.passwordResetToken.create({
       data: { email, token, expires },
     });
 
-    console.log("Mencoba mengirim email ke:", email);
+    console.log("Attempting to send email to:", email);
     await sendPasswordResetEmail(email, token);
-    console.log("Email berhasil terkirim!");
+    console.log("Email sent successfully!");
+
     return { success: true };
   } catch (error) {
-    console.error("ERROR SAAT FORGOT PASSWORD:", error);
-    return { error: "Something went wrong. Please try again." };
+    console.error("ERROR DURING FORGOT PASSWORD:", error);
+    return { error: "Failed to process the request. Please try again." };
   }
 }
 

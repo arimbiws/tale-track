@@ -1,4 +1,3 @@
-// app/(frontend)/page.tsx
 import Link from "next/link";
 import { searchBooks } from "@/lib/google-books";
 

@@ -15,8 +15,8 @@ export default function ForgotPasswordPage() {
 
     const formData = new FormData(e.currentTarget);
     const email = formData.get("email") as string;
-    const res = await forgotPasswordAction(email);
 
+    const res = await forgotPasswordAction(email);
     if (res?.error) {
       toast.error(res.error);
     } else if (res?.success) {
