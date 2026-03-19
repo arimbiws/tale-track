@@ -53,6 +53,15 @@ model ShelfItem {
   @@unique([shelf_id, book_id])
 }
 
+model PasswordResetToken {
+  id      String   @id @default(cuid())
+  email   String
+  token   String   @unique
+  expires DateTime
+
+  @@unique([email, token])
+}
+
 enum ReadStatus {
   TO_READ
   READING

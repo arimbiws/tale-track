@@ -20,8 +20,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className={`${inter.variable} ${playfair.variable} antialiased bg-primary/25 text-text`}>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.variable} ${playfair.variable} antialiased bg-primary/25 text-text`} suppressHydrationWarning>
         <Toaster
           position="bottom-right"
           toastOptions={{
@@ -42,7 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               },
             },
           }}
-        />{" "}
+        />
         {children}
       </body>
     </html>

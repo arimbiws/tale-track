@@ -140,7 +140,7 @@ export default function ShelvesClient({ initialShelves }: { initialShelves: any[
   };
 
   return (
-    <section className="max-w-7xl mx-auto px-4 pb-28 pt-34">
+    <section className="max-w-7xl mx-auto px-4 pb-28 pt-34 md:pt-38">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-8 bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
         <div>
           <h1 className="text-3xl md:text-4xl font-bold text-text mb-2">My Bookshelves</h1>
@@ -213,10 +213,18 @@ export default function ShelvesClient({ initialShelves }: { initialShelves: any[
 
       <div className="space-y-16">
         {initialShelves.length === 0 ? (
-          <div className="text-center py-32 bg-white rounded-3xl border border-gray-100 shadow-sm">
-            <span className="text-6xl mb-6 block">📚</span>
+          <div className="text-center py-28 bg-white rounded-3xl border border-gray-100 shadow-sm flex flex-col items-center">
+            <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mb-6 text-primary">
+              <LibraryBig className="w-10 h-10" />
+            </div>
+
             <h2 className="text-2xl font-bold mb-2 text-text">No Shelves Yet</h2>
-            <p className="text-text/60 text-lg font-medium">Create your first shelf above.</p>
+
+            <p className="text-text/60 text-sm md:text-base max-w-sm mb-6">You haven’t created any shelves yet. Start by creating your first shelf to organize your books.</p>
+
+            <button onClick={() => setIsAddShelfModalOpen(true)} className="bg-primary text-white px-6 py-3 rounded-xl font-bold text-sm shadow-lg shadow-primary/30 hover:bg-secondary transition">
+              Create First Shelf
+            </button>
           </div>
         ) : filteredShelves.length === 0 ? (
           <div className="text-center py-20 bg-white rounded-3xl border border-gray-100 shadow-sm flex flex-col items-center">

@@ -4,14 +4,25 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { logoutUser } from "@/app/actions/auth-action";
+import { LogOut, Loader2 } from "lucide-react";
 
 export default function Navbar({ user }: { user?: any }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
 
   const pathname = usePathname();
   const isHome = pathname === "/";
+
+  useEffect(() => {
+    setIsLogoutModalOpen(false);
+    setIsLoggingOut(false);
+    setIsDrawerOpen(false);
+    setIsProfileOpen(false);
+  }, [pathname]);
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -22,7 +33,22 @@ export default function Navbar({ user }: { user?: any }) {
 
   const closeDrawer = () => setIsDrawerOpen(false);
 
+  const handleLogout = async () => {
+    setIsLoggingOut(true);
+    await logoutUser();
+  };
+
   const navBackgroundClass = isHome ? (isScrolled ? "bg-primary/50 backdrop-blur-sm shadow-lg my-4 h-20" : "bg-background/30 backdrop-blur-sm my-4 h-20") : "bg-primary/70 backdrop-blur-sm shadow-lg my-4 h-20";
+
+  const getDesktopLinkClass = (path: string) => {
+    const isActive = path === "/" ? pathname === "/" : pathname.startsWith(path);
+    return `transition-all duration-100 hover:text-background hover:border-b-2 hover:pb-1 ${isActive ? "text-background border-b-2 pb-1" : ""}`;
+  };
+
+  const getMobileLinkClass = (path: string) => {
+    const isActive = path === "/" ? pathname === "/" : pathname.startsWith(path);
+    return `px-6 py-3 transition ${isActive ? "bg-primary text-background" : "hover:text-background hover:bg-primary"}`;
+  };
 
   return (
     <>
@@ -33,16 +59,16 @@ export default function Navbar({ user }: { user?: any }) {
           </Link>
 
           <div className="hidden md:flex items-center gap-8 font-semibold text-lg transition-all duration-300 text-background">
-            <Link href="/" className="hover:text-background hover:border-b-2 hover:pb-1 transition-all duration-100 ">
+            <Link href="/" className={getDesktopLinkClass("/")}>
               Home
             </Link>
-            <Link href="/explore" className="hover:text-background hover:border-b-2 hover:pb-1 transition-all duration-100 ">
+            <Link href="/explore" className={getDesktopLinkClass("/explore")}>
               Explore
             </Link>
-            <Link href="/shelves" className="hover:text-background hover:border-b-2 hover:pb-1 transition-all duration-100 ">
+            <Link href="/shelves" className={getDesktopLinkClass("/shelves")}>
               Bookshelves
             </Link>
-            <Link href="/contact" className="hover:text-background hover:border-b-2 hover:pb-1 transition-all duration-100 ">
+            <Link href="/contact" className={getDesktopLinkClass("/contact")}>
               Contact
             </Link>
           </div>
@@ -54,7 +80,7 @@ export default function Navbar({ user }: { user?: any }) {
                   onClick={() => setIsProfileOpen(!isProfileOpen)}
                   className={`flex items-center justify-center w-10 h-10 rounded-full font-bold text-background shadow-lg transition-all hover:scale-105 ${isScrolled ? "bg-primary" : "bg-background/90 text-primary"}`}
                 >
-                  {user.name?.charAt(0).toUpperCase()}{" "}
+                  {user.name?.charAt(0).toUpperCase()}
                 </button>
 
                 {isProfileOpen && (
@@ -64,17 +90,23 @@ export default function Navbar({ user }: { user?: any }) {
                       <p className="text-xs text-gray-500 truncate">{user.email}</p>
                     </div>
                     <Link href="/profile" onClick={() => setIsProfileOpen(false)} className="px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-primary/5 hover:text-primary transition-colors text-left">
-                      Pengaturan Profil
+                      Profile Settings
                     </Link>
-                    <button onClick={() => logoutUser()} className="px-4 py-2 text-sm font-semibold text-red-600 hover:bg-red-50 transition-colors text-left">
-                      Keluar
+                    <button
+                      onClick={() => {
+                        setIsProfileOpen(false);
+                        setIsLogoutModalOpen(true);
+                      }}
+                      className="px-4 py-2 text-sm font-semibold text-danger hover:bg-danger/10 transition-colors text-left flex items-center gap-2"
+                    >
+                      <LogOut className="w-4 h-4" /> Log Out
                     </button>
                   </div>
                 )}
               </div>
             ) : (
               <>
-                <Link href="/login" className={`font-semibold transition-all duration-100 hover:border-b-2 hover:pb-1 ${isScrolled ? "text-background" : "text-background"}`}>
+                <Link href="/login" className="font-semibold transition-all duration-100 hover:border-b-2 hover:pb-1 text-background">
                   Login
                 </Link>
                 <Link
@@ -88,7 +120,7 @@ export default function Navbar({ user }: { user?: any }) {
           </div>
 
           {!isDrawerOpen && (
-            <button className={`md:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1.5 focus:outline-none z-50 transition-colors ${isScrolled ? "text-background" : "text-background"}`} onClick={() => setIsDrawerOpen(true)}>
+            <button className="md:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1.5 focus:outline-none z-50 transition-colors text-background" onClick={() => setIsDrawerOpen(true)}>
               <span className="block w-6 h-0.5 bg-background"></span>
               <span className="block w-6 h-0.5 bg-background"></span>
               <span className="block w-6 h-0.5 bg-background"></span>
@@ -98,13 +130,12 @@ export default function Navbar({ user }: { user?: any }) {
       </nav>
 
       <div className={`fixed inset-0 z-40 bg-black/50 backdrop-blur-sm transition-opacity duration-300 md:hidden ${isDrawerOpen ? "opacity-100 visible" : "opacity-0 invisible"}`} onClick={closeDrawer}></div>
-
       <div
         className={`fixed top-0 left-0 h-full w-64 bg-background/70 backdrop-blur-sm shadow-2xl z-50 transform transition-transform duration-300 ease-in-out md:hidden flex flex-col ${isDrawerOpen ? "translate-x-0" : "-translate-x-full"}`}
       >
         <div className="flex items-center justify-between px-6 h-24 border-b border-primary/30">
           <span className="font-heading font-bold text-primary text-2xl tracking-wider">Menu</span>
-          <button onClick={closeDrawer} className="p-2 text-secondary hover:text-primary hover:bg-primary/10 rounded-full transition-colors focus:outline-none" aria-label="Close Menu">
+          <button onClick={closeDrawer} className="p-2 text-secondary hover:text-primary hover:bg-primary/10 rounded-full transition-colors focus:outline-none">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
@@ -112,16 +143,16 @@ export default function Navbar({ user }: { user?: any }) {
         </div>
 
         <div className="flex flex-col font-semibold text-lg text-secondary">
-          <Link href="/" onClick={closeDrawer} className="hover:text-background hover:bg-primary px-6 py-3 transition">
+          <Link href="/" onClick={closeDrawer} className={getMobileLinkClass("/")}>
             Home
           </Link>
-          <Link href="/explore" onClick={closeDrawer} className="hover:text-background hover:bg-primary px-6 py-3 transition">
+          <Link href="/explore" onClick={closeDrawer} className={getMobileLinkClass("/explore")}>
             Explore
           </Link>
-          <Link href="/shelves" onClick={closeDrawer} className="hover:text-background hover:bg-primary px-6 py-3 transition">
+          <Link href="/shelves" onClick={closeDrawer} className={getMobileLinkClass("/shelves")}>
             Bookshelves
           </Link>
-          <Link href="/contact" onClick={closeDrawer} className="hover:text-background hover:bg-primary px-6 py-3 transition">
+          <Link href="/contact" onClick={closeDrawer} className={getMobileLinkClass("/contact")}>
             Contact
           </Link>
         </div>
@@ -134,16 +165,16 @@ export default function Navbar({ user }: { user?: any }) {
                 <p className="text-xs text-gray-500">{user.email}</p>
               </div>
               <Link href="/profile" onClick={closeDrawer} className="text-center font-bold text-secondary hover:text-background border-2 border-secondary py-2 rounded-xl hover:bg-secondary transition">
-                Profil Saya
+                My Profile
               </Link>
               <button
                 onClick={() => {
                   closeDrawer();
-                  logoutUser();
+                  setIsLogoutModalOpen(true);
                 }}
                 className="text-center font-bold text-danger hover:text-background py-2 rounded-xl shadow-lg border-2 border-danger hover:bg-danger transition"
               >
-                Keluar
+                Log Out
               </button>
             </>
           ) : (
@@ -158,6 +189,32 @@ export default function Navbar({ user }: { user?: any }) {
           )}
         </div>
       </div>
+
+      {isLogoutModalOpen && (
+        <div className="fixed inset-0 z-[70] flex items-center justify-center p-4 bg-text/60 backdrop-blur-sm">
+          <div className="bg-white rounded-3xl p-8 w-full max-w-sm shadow-2xl text-center animate-in fade-in zoom-in duration-200">
+            <div className="w-20 h-20 bg-danger/10 text-danger rounded-full flex items-center justify-center mx-auto mb-6 text-3xl">
+              <LogOut className="w-10 h-10 ml-1" />
+            </div>
+            <h3 className="text-xl font-bold text-text mb-2">Log Out of Account?</h3>
+            <p className="text-sm text-text/60 mb-8 leading-relaxed">You will need to log in again to access your bookshelves.</p>
+
+            <div className="flex gap-3">
+              <button type="button" disabled={isLoggingOut} onClick={() => setIsLogoutModalOpen(false)} className="flex-1 bg-background text-text py-3.5 rounded-xl font-bold hover:bg-gray-200 transition">
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={handleLogout}
+                disabled={isLoggingOut}
+                className="flex-1 bg-danger text-white py-3.5 rounded-xl font-bold shadow-lg shadow-danger/30 hover:bg-red-600 transition flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-wait"
+              >
+                {isLoggingOut ? <Loader2 className="w-4 h-4 animate-spin" /> : "Yes, Log Out"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
