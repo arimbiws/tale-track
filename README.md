@@ -19,9 +19,9 @@ A personal digital catalog to track your reading progress, manage your dream boo
 ## Preview
 
 <p align="center">
-  <img src="public/screenshots/screenshot-home.png" alt="Home Preview" width="33%" />
-  <img src="public/screenshots/screenshot-explore.png" alt="Explore Page Preview" width="33%" />
-  <img src="public/screenshots/screenshot-shelves.png" alt="Shelves Page Preview" width="33%" />
+  <img src="public/screenshots/screenshot-home.png" alt="Home Preview" width="30%" />
+  <img src="public/screenshots/screenshot-explore.png" alt="Explore Page Preview" width="30%" />
+  <img src="public/screenshots/screenshot-shelves.png" alt="Shelves Page Preview" width="30%" />
 </p>
 
 ## Features
