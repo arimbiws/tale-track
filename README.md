@@ -56,27 +56,61 @@ A personal digital catalog to track your reading progress, manage your dream boo
 
 ## Project Structure
 
-Project Structure
-
 ```text
 tale-track/
 ├── app/
+│   ├── (auth)/
+│   │   ├── forgot-password/
+│   │   ├── reset-password/
+│   │   ├── login/
+│   │   └── signup/
 │   ├── (frontend)/
+│   │   ├── page.tsx
+│   │   ├── layout.tsx
 │   │   ├── explore/
+│   │   |   ├── [id]
+│   │   |   └── loading.tsx
 │   │   ├── shelves/
 │   │   ├── contact/
-│   │   └── page.tsx
-│   ├── actions/
-│   ├── api/
+│   │   └── profile/
 │   ├── ~offline/
+│   ├── actions/
+│   │   ├── auth-action.ts
+│   │   ├── book-action.ts
+│   │   └── profile-action.ts
+│   ├── api/
+│   │   ├── auth/
+│   │   |   └── [...nextauth]
+│   │   |       └── route.ts
+│   │   └── books/
+│   │       └── route.ts
 │   ├── layout.tsx
 │   └── globals.css
 ├── components/
+│   ├── Navbar.tsx
+│   ├── Footer.css
+│   ├── BookCard.tsx
+│   ├── ShelvesClient.tsx
+│   ├── ProfileClient.tsx
+│   └── SearchForm.tsx
 ├── lib/
-├── public/
+│   ├── google-books.ts
+│   ├── mail.ts
+│   └── prisma.ts
 ├── prisma/
+│   ├── schema.prisma
+│   └── seed.ts
+├── public/
+│   ├── images/
+│   ├── logo/
+│   └── screenshots/
+├── .gitignore
+├── README.md
+├── auth.config.ts
+├── auth.ts
 ├── middleware.ts
-└── next.config.ts
+├── next.config.ts
+└── package.json
 ```
 
 ## Run Locally
@@ -101,7 +135,7 @@ Follow these steps to run TaleTrack on your local machine
    Create a .env file in the root directory and configure it based on your credentials:
 
    ```bash
-    DATABASE_URL="your_supabase_pool_url"
+   DATABASE_URL="your_supabase_pool_url"
    DIRECT_URL="your_supabase_direct_url"
 
    AUTH_SECRET="your_generated_secret"
@@ -115,7 +149,7 @@ Follow these steps to run TaleTrack on your local machine
    EMAIL_USER="your_email@gmail.com"
    EMAIL_PASS="your_app_password"
    ```
-
+   
 4. Initialize the Database
    ```bash
    npx prisma db push
@@ -125,7 +159,6 @@ Follow these steps to run TaleTrack on your local machine
    ```bash
    npm run dev
    ```
-
    Navigate to http://localhost:3000 to view it in your browser.
 
 ## Future Improvements
