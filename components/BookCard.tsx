@@ -26,7 +26,7 @@ export default function BookCard({ book, shelves, isLoggedIn }: { book: any; she
     if (res?.error) {
       toast.error(res.error);
     } else {
-      toast.success("Buku berhasil disimpan!");
+      toast.success("Book saved successfully!");
       setIsModalOpen(false);
     }
     setIsSubmitting(false);
@@ -35,8 +35,8 @@ export default function BookCard({ book, shelves, isLoggedIn }: { book: any; she
   return (
     <>
       <div className="bg-background p-3 sm:p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col group hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-        <Link href={`/explore/${book.id}`} className="flex flex-col flex-grow cursor-pointer">
-          <div className="relative overflow-hidden rounded-md mb-3 aspect-[2/3] bg-gray-100 shadow-inner">
+        <Link href={`/explore/${book.id}`} className="flex flex-col grow cursor-pointer">
+          <div className="relative overflow-hidden rounded-md mb-3 aspect-2/3 bg-gray-100 shadow-inner">
             <img src={book.cover_url || "/images/img-placeholder.jpeg"} alt={book.title} className="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
           </div>
           <h3 className="font-bold text-gray-800 text-sm line-clamp-2 leading-tight group-hover:text-primary transition-colors">{book.title}</h3>
@@ -44,7 +44,7 @@ export default function BookCard({ book, shelves, isLoggedIn }: { book: any; she
         </Link>
 
         <button onClick={() => setIsModalOpen(true)} className="w-full mt-auto bg-primary/10 text-primary py-2 rounded-lg text-xs font-bold hover:bg-primary hover:text-background transition">
-          + Simpan ke Rak
+          + Add to Shelf
         </button>
       </div>
 
@@ -60,13 +60,13 @@ export default function BookCard({ book, shelves, isLoggedIn }: { book: any; she
                 <div className="w-16 h-16 bg-primary/20 text-primary rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
                   <LockKeyhole />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Akses Terbatas</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Login Required</h3>
                 <p className="text-sm text-gray-500 mb-8 px-2">
-                  Anda harus masuk terlebih dahulu untuk menyimpan buku <span className="font-bold text-gray-700">"{book.title}"</span> ke rak Anda.
+                  You need to be logged in to save <span className="font-bold text-gray-700">"{book.title}"</span> to your shelves.
                 </p>
                 <div className="flex gap-3">
                   <button onClick={() => setIsModalOpen(false)} className="flex-1 bg-gray-100 text-gray-700 py-3 rounded-xl font-bold text-sm hover:bg-gray-200 transition">
-                    Batal
+                    Cancel
                   </button>
                   <button
                     onClick={() => {
@@ -81,14 +81,14 @@ export default function BookCard({ book, shelves, isLoggedIn }: { book: any; she
               </div>
             ) : (
               <div className="mt-2">
-                <h3 className="text-xl font-bold text-gray-900 mb-1">Pilih Rak</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-1">Select a Shelf</h3>
                 <p className="text-sm text-gray-500 mb-6">
-                  Mau simpan <span className="font-bold text-gray-700">"{book.title}"</span> di mana?
+                  Where would you like to save <span className="font-bold text-gray-700">"{book.title}"</span>?
                 </p>
 
                 {shelves.length === 0 ? (
                   <div className="text-center bg-gray-50 p-6 rounded-2xl mb-4 border border-gray-100">
-                    <p className="text-sm text-gray-600 mb-4">Anda belum membuat rak buku satupun.</p>
+                    <p className="text-sm text-gray-600 mb-4">You haven't created any shelves yet.</p>
                     <button
                       onClick={() => {
                         setIsModalOpen(false);
@@ -96,7 +96,7 @@ export default function BookCard({ book, shelves, isLoggedIn }: { book: any; she
                       }}
                       className="bg-primary/10 text-primary px-6 py-2.5 rounded-xl text-sm font-bold hover:bg-primary hover:text-background transition w-full"
                     >
-                      Buat Rak Baru
+                      Create New Shelf
                     </button>
                   </div>
                 ) : (
@@ -110,9 +110,9 @@ export default function BookCard({ book, shelves, isLoggedIn }: { book: any; she
                     <select
                       name="shelfId"
                       required
-                      className="border border-gray-200 rounded-xl p-3.5 bg-gray-50 text-text/70 font-medium focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 appearance-none pr-10 bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%236b7280%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E')] bg-no-repeat bg-[position:right_1rem_center] bg-[length:1.2em_1.2em]"
+                      className="border border-gray-200 rounded-xl p-3.5 bg-gray-50 text-text/70 font-medium focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 appearance-none pr-10 bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%236b7280%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E')] bg-no-repeat bg-position-[right_1rem_center] bg-size-[1.2em_1.2em]"
                     >
-                      <option value="">Pilih Rak Anda</option>
+                      <option value="">Choose a shelf</option>
                       {shelves.map((shelf) => (
                         <option className="text-text" key={shelf.id} value={shelf.id}>
                           {shelf.name}
@@ -127,12 +127,12 @@ export default function BookCard({ book, shelves, isLoggedIn }: { book: any; she
                         ${isSubmitting ? "bg-primary/70 text-background cursor-wait shadow-none" : "bg-primary text-background hover:bg-secondary shadow-primary/30"}`}
                     >
                       {isSubmitting && <Loader2 className="w-5 h-5 animate-spin" />}
-                      {isSubmitting ? "Menyimpan..." : "Simpan Buku"}
+                      {isSubmitting ? "Saving..." : "Save Book"}
                     </button>
 
                     <div className="text-center mt-2">
                       <p className="text-xs text-gray-500">
-                        Belum ada rak yang pas?{" "}
+                        Don't have the right shelf?{" "}
                         <button
                           type="button"
                           onClick={() => {
@@ -141,7 +141,7 @@ export default function BookCard({ book, shelves, isLoggedIn }: { book: any; she
                           }}
                           className="text-primary font-bold hover:underline inline-flex items-center gap-1"
                         >
-                          <Plus className="w-3 h-3" /> Buat Rak Baru
+                          <Plus className="w-3 h-3" /> Create New Shelf
                         </button>
                       </p>
                     </div>

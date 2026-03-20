@@ -27,7 +27,7 @@ export default async function BookDetailPage({ params }: { params: Promise<{ id:
 
         <div className="bg-white rounded-3xl p-6 sm:p-10 shadow-sm border border-gray-100 flex flex-col md:flex-row gap-8 md:gap-12">
           <div className="w-full md:w-1/3 shrink-0">
-            <div className="aspect-[2/3] rounded-2xl overflow-hidden shadow-xl border border-gray-100 relative">
+            <div className="aspect-2/3 rounded-2xl overflow-hidden shadow-xl border border-gray-100 relative">
               {book.cover_url ? (
                 <img src={book.cover_url} alt={book.title} className="w-full h-full object-cover" />
               ) : (

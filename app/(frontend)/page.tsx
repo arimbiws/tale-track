@@ -8,8 +8,8 @@ export default async function LandingPage() {
 
   return (
     <main className="min-h-screen">
-      <section className="relative h-screen min-h-[600px] flex items-center justify-center bg-[url('/images/bg-hero.jpg')] bg-cover bg-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-background/25 z-0"></div>
+      <section className="relative h-screen min-h-150 flex items-center justify-center bg-[url('/images/bg-hero.jpg')] bg-cover bg-center overflow-hidden">
+        <div className="absolute inset-0 bg-linear-to-b from-black/70 via-black/40 to-background/25 z-0"></div>
 
         <div className="relative z-10 max-w-5xl mx-auto px-6 text-center text-white pt-10">
           <span className="inline-block py-1 px-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs md:text-sm font-semibold tracking-wider mb-4 animate-fade-in-up">Track your tales, connect your pages</span>
@@ -54,7 +54,7 @@ export default async function LandingPage() {
               icon: <Compass className="w-8 h-8 text-primary" />,
             },
           ].map((uvp, i) => (
-            <div key={i} className="p-8 md:p-10 rounded-[2rem] bg-white border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group justify-center items-center flex flex-col">
+            <div key={i} className="p-8 md:p-10 rounded-4xl bg-white border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group justify-center items-center flex flex-col">
               <div className="w-16 h-16 mb-6 bg-primary/10 rounded-2xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">{uvp.icon}</div>
               <h3 className="text-xl md:text-2xl font-bold mb-3 text-text">{uvp.title}</h3>
               <p className="text-gray-500 leading-relaxed">{uvp.desc}</p>
@@ -64,7 +64,7 @@ export default async function LandingPage() {
       </section>
 
       <section className="md:max-w-5xl mx-auto px-4 sm:px-6 pb-20 md:pb-32">
-        <div className="bg-gradient-to-br from-primary/5 to-accent/10 rounded-[3rem] p-10 md:p-20 relative overflow-hidden text-center border border-primary/10 shadow-inner">
+        <div className="bg-linear-to-br from-primary/5 to-accent/10 rounded-[3rem] p-10 md:p-20 relative overflow-hidden text-center border border-primary/10 shadow-inner">
           <Quote className="absolute top-8 left-8 md:top-12 md:left-12 w-24 h-24 text-primary opacity-10" />
 
           <div className="relative z-10">
@@ -96,9 +96,9 @@ export default async function LandingPage() {
         <div className="flex w-full overflow-x-auto gap-6 px-6 md:px-12 pb-8 snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden">
           {carouselBooks?.map((book: any, i: number) => (
             <div key={i} className="w-32 md:w-44 shrink-0 group cursor-pointer snap-start">
-              <div className="relative overflow-hidden rounded-2xl shadow-xl border border-white/10 aspect-[2/3] mb-4 bg-gray-800">
+              <div className="relative overflow-hidden rounded-2xl shadow-xl border border-white/10 aspect-2/3 mb-4 bg-gray-800">
                 <Image src={book.cover_url || "/images/img-placeholder.jpeg"} alt={book.title} className="w-full h-full object-cover group-hover:scale-110 transition duration-700 ease-in-out" loading="lazy" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
+                <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
                   <span className="text-white text-xs font-bold bg-primary/90 px-3 py-1.5 rounded-full backdrop-blur-sm">View Details</span>
                 </div>
               </div>

@@ -213,11 +213,8 @@ export default function ShelvesClient({ initialShelves }: { initialShelves: any[
             <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mb-6 text-primary">
               <LibraryBig className="w-10 h-10" />
             </div>
-
             <h2 className="text-2xl font-bold mb-2 text-text">No Shelves Yet</h2>
-
             <p className="text-text/60 text-sm md:text-base max-w-sm mb-6">You haven’t created any shelves yet. Start by creating your first shelf to organize your books.</p>
-
             <button onClick={() => setIsAddShelfModalOpen(true)} className="bg-primary text-white px-6 py-3 rounded-xl font-bold text-sm shadow-lg shadow-primary/30 hover:bg-secondary transition">
               Create First Shelf
             </button>
@@ -331,7 +328,13 @@ export default function ShelvesClient({ initialShelves }: { initialShelves: any[
             </button>
             <h3 className="text-xl font-bold mb-2 text-text">Create New Shelf</h3>
             <form action={handleCreateShelf} className="flex flex-col gap-4 mt-4">
-              <input type="text" name="name" placeholder="Shelf Name (e.2026 Goals)" required className="border border-gray-200 rounded-xl p-3 bg-background focus:ring-2 focus:ring-primary/20 focus:border-primary text-text outline-none" />
+              <input
+                type="text"
+                name="name"
+                placeholder="Shelf Name (e.g., 2026 Goals)"
+                required
+                className="border border-gray-200 rounded-xl p-3 bg-background focus:ring-2 focus:ring-primary/20 focus:border-primary text-text outline-none"
+              />
               <textarea
                 name="description"
                 placeholder="Description (optional)..."
@@ -401,7 +404,7 @@ export default function ShelvesClient({ initialShelves }: { initialShelves: any[
             <p className="text-sm text-text/60 mb-2 leading-relaxed">
               Are you sure you want to delete <span className="font-bold text-text">"{shelfToDelete.name}"</span>?
             </p>
-            <p className="text-xs text-danger/80 bg-danger/10 p-2 rounded-lg mb-6 font-semibold">All books inside this shelf will also be removeThis action cannot be undone.</p>
+            <p className="text-xs text-danger/80 bg-danger/10 p-2 rounded-lg mb-6 font-semibold">All books inside this shelf will also be removed. This action cannot be undone.</p>
 
             <div className="flex gap-3">
               <button type="button" disabled={isDeletingShelf} onClick={() => setShelfToDelete(null)} className="flex-1 bg-background text-text py-3.5 rounded-xl font-bold hover:bg-gray-200 transition">

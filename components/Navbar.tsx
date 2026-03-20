@@ -191,7 +191,7 @@ export default function Navbar({ user }: { user?: any }) {
       </div>
 
       {isLogoutModalOpen && (
-        <div className="fixed inset-0 z-[70] flex items-center justify-center p-4 bg-text/60 backdrop-blur-sm">
+        <div className="fixed inset-0 z-70 flex items-center justify-center p-4 bg-text/60 backdrop-blur-sm">
           <div className="bg-white rounded-3xl p-8 w-full max-w-sm shadow-2xl text-center animate-in fade-in zoom-in duration-200">
             <div className="w-20 h-20 bg-danger/10 text-danger rounded-full flex items-center justify-center mx-auto mb-6 text-3xl">
               <LogOut className="w-10 h-10 ml-1" />

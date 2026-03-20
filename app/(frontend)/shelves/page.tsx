@@ -1,9 +1,7 @@
-import { PrismaClient } from "@prisma/client";
+import { prisma } from "@/lib/prisma";
 import ShelvesClient from "@/components/ShelvesClient";
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
-
-const prisma = new PrismaClient();
 
 export default async function ShelvesPage() {
   const session = await auth();

@@ -15,13 +15,13 @@ export default function OfflinePage() {
       <p className="text-gray-500 max-w-md mb-10 leading-relaxed">It seems you have lost your internet connection. Some features of TaleTrack are currently unavailable.</p>
 
       <div className="flex gap-4">
-        <button onClick={() => window.location.reload()} className="flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full font-bold hover:bg-secondary transition-colors shadow-lg shadow-primary/30">
-          <RotateCcw className="w-4 h-4" /> Try Again
-        </button>
-
         <Link href="/" className="flex items-center gap-2 bg-white text-text border border-gray-200 px-6 py-3 rounded-full font-bold hover:border-primary hover:text-primary transition-colors shadow-sm">
           Go to Home
         </Link>
+
+        <button onClick={() => window.location.reload()} className="flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full font-bold hover:bg-secondary transition-colors shadow-lg shadow-primary/30">
+          <RotateCcw className="w-4 h-4" /> Try Again
+        </button>
       </div>
     </div>
   );

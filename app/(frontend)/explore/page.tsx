@@ -37,8 +37,8 @@ export default async function ExplorePage({ searchParams }: { searchParams: Prom
   return (
     <section className="max-w-7xl mx-auto px-4 pb-28 pt-34 md:pt-38">
       <div className="text-center mb-10">
-        <h1 className="font-heading text-4xl md:text-5xl font-bold mb-4 text-text">Eksplorasi Buku</h1>
-        <p className="text-gray-500">Cari judul, penulis, atau telusuri berdasarkan genre favoritmu.</p>
+        <h1 className="font-heading text-4xl md:text-5xl font-bold mb-4 text-text">Explore Books</h1>
+        <p className="text-gray-500">Search by title, author, or browse your favorite genres.</p>
       </div>
 
       <SearchForm initialQuery={searchQuery} />
@@ -69,11 +69,11 @@ export default async function ExplorePage({ searchParams }: { searchParams: Prom
           books.map((book: any) => <BookCard key={book.id} book={book} shelves={shelves} isLoggedIn={isLoggedIn} />)
         ) : (
           <div className="col-span-full text-center py-20 bg-white rounded-3xl border border-gray-100 shadow-sm">
-            <p className="text-6xl mb-4">
-              <Search className="h-8 w-8 text-primary" />
+            <p className="text-6xl mb-4 flex justify-center">
+              <Search className="h-10 w-10 text-primary opacity-50" />
             </p>
-            <h3 className="text-xl font-bold text-gray-800">Buku tidak ditemukan</h3>
-            <p className="text-gray-500 mt-2">Coba gunakan kata kunci atau nama penulis yang berbeda.</p>
+            <h3 className="text-xl font-bold text-gray-800">No Books Found</h3>
+            <p className="text-gray-500 mt-2">Try using a different keyword or author name.</p>
           </div>
         )}
       </div>
@@ -94,7 +94,7 @@ export default async function ExplorePage({ searchParams }: { searchParams: Prom
           )}
 
           <span className="text-sm font-medium text-gray-600 px-4 py-2">
-            Page <span className="font-bold text-primary">{currentPage}</span> out of {totalPages}
+            Page <span className="font-bold text-primary">{currentPage}</span> of {totalPages}
           </span>
 
           {currentPage < totalPages ? (
