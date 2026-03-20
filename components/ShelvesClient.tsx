@@ -39,10 +39,8 @@ export default function ShelvesClient({ initialShelves }: { initialShelves: any[
   const lowerQuery = searchQuery.toLowerCase();
   const filteredShelves = initialShelves
     .map((shelf) => {
-      // Cek apakah nama rak cocok dengan pencarian
       const isShelfMatch = shelf.name.toLowerCase().includes(lowerQuery);
 
-      // Filter buku di dalam rak (berdasarkan Judul, Author, atau Deskripsi)
       const matchingItems = shelf.items.filter((item: any) => {
         const titleMatch = item.book?.title?.toLowerCase().includes(lowerQuery) || false;
         const authorMatch = item.book?.author?.toLowerCase().includes(lowerQuery) || false;
@@ -53,13 +51,11 @@ export default function ShelvesClient({ initialShelves }: { initialShelves: any[
 
       return {
         ...shelf,
-        // Jika nama rak cocok, tampilkan SEMUA bukunya. Jika tidak, tampilkan buku yang cocok saja.
         items: searchQuery ? (isShelfMatch ? shelf.items : matchingItems) : shelf.items,
         isShelfMatch,
       };
     })
     .filter((shelf) => {
-      // Tampilkan rak JIKA nama rak cocok ATAU ada buku di dalamnya yang cocok
       return shelf.isShelfMatch || shelf.items.length > 0;
     });
 

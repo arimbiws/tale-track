@@ -33,7 +33,7 @@ export default function ForgotPasswordPage() {
         <div className="p-8 sm:p-10 relative z-10">
           <div className="text-center mb-8">
             <Link href="/" className="inline-block mb-3 group">
-              <img src="/logo/taletrack-logo.png" alt="TaleTrack Logo" className="h-15 w-auto mx-auto group-hover:scale-105 transition-transform" />
+              <img src="/logo/logo-taletrack.png" alt="TaleTrack Logo" className="h-15 w-auto mx-auto group-hover:scale-105 transition-transform" />
             </Link>
             <h2 className="text-2xl font-heading font-bold text-text mb-2">Reset Password</h2>
             {!isSubmitted && <p className="text-sm text-text/60">Enter your email address and we'll send you a link to reset your password.</p>}

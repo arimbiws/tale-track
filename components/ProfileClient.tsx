@@ -24,7 +24,6 @@ export default function ProfileClient({ user }: { user: any }) {
       setCurrentName(user.name);
     } else {
       toast.success("Profile updated successfully!");
-      // Me-refresh router akan memicu layout mengambil data terbaru dari database
       router.refresh();
     }
 

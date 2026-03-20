@@ -55,7 +55,7 @@ export default function Navbar({ user }: { user?: any }) {
       <nav className="fixed top-0 w-full z-50 px-4 transition-all duration-300">
         <div className={`max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between rounded-full transition-all duration-500 ease-in-out ${navBackgroundClass}`}>
           <Link href="/" className="font-heading font-bold text-primary shrink-0">
-            <img src="/logo/taletrack-logo.png" alt="Logo Tale Track" className="h-10 md:h-12 w-auto object-contain" />
+            <img src="/logo/logo-taletrack.png" alt="Logo Tale Track" className="h-10 md:h-12 w-auto object-contain" />
           </Link>
 
           <div className="hidden md:flex items-center gap-8 font-semibold text-lg transition-all duration-300 text-background">

@@ -1,160 +1,178 @@
 import Link from "next/link";
 import { searchBooks } from "@/lib/google-books";
+import { BookOpen, Library, Compass, ArrowRight, Quote, ChevronDown } from "lucide-react";
 
 export default async function LandingPage() {
   const { books: carouselBooks } = await searchBooks("booktok OR bookstagram bestseller", 1, 12);
 
   return (
-    <main>
-      {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center bg-[url('/images/bg-hero.jpg')] bg-cover bg-center">
-        <div className="absolute inset-0 bg-black/40 z-0"></div>
+    <main className="min-h-screen">
+      <section className="relative h-screen min-h-[600px] flex items-center justify-center bg-[url('/images/bg-hero.jpg')] bg-cover bg-center overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-background/25 z-0"></div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 text-center text-white pt-14">
-          <h1 className="font-heading text-5xl md:text-7xl font-bold mb-6 tracking-wide drop-shadow-md">Your Digital Library</h1>
-          <p className="text-sm md:text-xl px-5 mb-10 max-w-xs md:max-w-3xl mx-auto font-light text-gray-200">Organize, track, and discover your next favorite book with TaleTrack.</p>
+        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center text-white pt-10">
+          <span className="inline-block py-1 px-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs md:text-sm font-semibold tracking-wider mb-4 animate-fade-in-up">Track your tales, connect your pages</span>
+          <h1 className="font-heading text-5xl md:text-6xl font-bold mb-6 tracking-tight drop-shadow-xl leading-tight">
+            Build Your Own <br className="block md:hidden" />
+            Digital Library
+          </h1>
+          <p className="text-sm sm:text-base md:text-lg mb-10 max-w-xs sm:max-w-2xl mx-auto font-light text-gray-200 leading-relaxed drop-shadow-md">
+            Log your reading journey, organize your dream bookshelves, and discover your next favorite story in one beautiful space.
+          </p>
           <Link
             href="/explore"
-            className="inline-block bg-primary text-white px-10 py-4 rounded-full text-base md:text-lg font-bold hover:bg-secondary transition-all transform hover:-translate-y-1 shadow-[0_10px_40px_-10px_rgba(81,154,102,0.8)]"
+            className="inline-flex items-center gap-2 bg-primary text-white px-8 py-4 rounded-full text-base md:text-lg font-bold hover:bg-secondary transition-all duration-300 transform hover:-translate-y-1 shadow-[0_10px_40px_-10px_rgba(var(--primary-rgb),0.6)] group"
           >
-            Explore More Books
+            Start Exploring
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
       </section>
 
-      {/* UVP Section */}
-      <section className="py-12 md:py-24 max-w-7xl mx-auto px-6 grid grid-cols-3 gap-3 sm:gap-5 md:gap-10">
-        {[
-          {
-            title: "Smart Reading Tracker",
-            desc: "Track every page you read in real-time and stay motivated to reach your daily reading goals.",
-            icon: "📈",
-          },
-          {
-            title: "Custom Bookshelves",
-            desc: "Create personalized shelves based on genres, moods, or your yearly reading goals.",
-            icon: "📂",
-          },
-          {
-            title: "Discover New Books",
-            desc: "Explore millions of books worldwide through a powerful and intelligent search system.",
-            icon: "🔍",
-          },
-        ].map((uvp, i) => (
-          <div key={i} className="p-3 md:p-8 rounded-3xl bg-white border border-gray-100 text-center shadow-sm hover:shadow-md transition-shadow">
-            <span className="text-2xl md:text-5xl mb-6 bg-primary/10 w-20 h-20 mx-auto flex items-center justify-center rounded-2xl">{uvp.icon}</span>
-            <h3 className="text-lg md:text-2xl font-bold mb-4 text-text">{uvp.title}</h3>
-            <p className="text-gray-500 leading-relaxed hidden md:block">{uvp.desc}</p>
-          </div>
-        ))}
-      </section>
-
-      {/* QOTD */}
-      <section className="md:max-w-5xl mx-auto px-4 sm:px-6 pb-16 md:pb-24">
-        <div className="bg-primary/5 rounded-[2.5rem] p-10 md:p-16 relative overflow-hidden text-center border border-primary/10">
-          <span className="absolute top-4 left-6 text-9xl text-primary opacity-10 font-serif leading-none">“</span>
-
-          <div className="relative z-10">
-            <span className="text-primary font-bold tracking-widest uppercase text-xs mb-6 block"> Quote of the Day</span>
-            <blockquote className="max-w-3xl mx-auto">
-              <cite className="text-xl sm:text-2xl md:text-3xl font-serif text-gray-800 leading-relaxed"> “Reading lets us live in someone else's shoes. Literature builds bridges; it makes our world larger, not smaller.”</cite>
-              <p className="font-bold text-text block text-lg mt-8">— R.F. Kuang, Yellowface</p>
-            </blockquote>
-          </div>
-        </div>
-      </section>
-
-      {/* Popular Books Section */}
-      <section className="py-16 md:py-24 bg-text text-background">
-        <div className="max-w-7xl mx-auto px-6 mb-12 flex flex-col sm:flex-row justify-between sm:items-center gap-6">
-          <div>
-            <h2 className="text-primary font-heading text-4xl md:text-5xl font-bold mb-4">Discover Popular Books</h2>
-            <p className="text-sm"> Swipe to discover books that readers are loving right now.</p>
-          </div>
-          <div className="text-end">
-            <Link href="/explore" className="text-background hover:text-accent font-medium transition border-[0.5] border-background hover:border-accent rounded-md px-3 py-1 text-xs md:text-sm">
-              View All &rarr;
-            </Link>
-          </div>
+      <section className="py-20 md:py-32 max-w-7xl mx-auto px-6">
+        <div className="text-center mb-12">
+          <h2 className="text-2xl md:text-4xl font-heading font-bold text-text mb-4">Everything You Need as a Reader</h2>
+          <p className="text-gray-500 max-w-sm md:max-w-xl mx-auto">A simple yet powerful system to help you stay consistent and enjoy reading more.</p>
         </div>
 
-        <div className="flex w-full overflow-x-auto gap-6 px-6 md:px-12 snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden">
-          {carouselBooks.map((book: any, i: number) => (
-            <div key={i} className="w-25 md:w-37.5 shrink-0 group cursor-pointer snap-start">
-              <div className="relative overflow-hidden rounded-xl shadow-2xl border border-gray-700 aspect-2/3">
-                <img src={book.cover_url || "/images/img-placeholder.jpeg"} alt={book.title} className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
-                <div className="absolute inset-0 bg-linear-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-end p-4">
-                  <span className="text-white text-xs bg-primary px-1 sm:px-2 py-1 rounded">See More</span>
-                </div>
-              </div>
-              <h4 className="text-sm font-bold truncate mt-4 mb-1.5">{book.title}</h4>
-              <p className="text-xs text-gray-400 truncate">{book.author}</p>
-              <p className="text-xs text-gray-400 truncate">{book.year}</p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10">
+          {[
+            {
+              title: "Smart Tracker",
+              desc: "Log your daily pages, track reading streaks, and stay motivated to hit your yearly reading goals.",
+              icon: <BookOpen className="w-8 h-8 text-primary" />,
+            },
+            {
+              title: "Custom Shelves",
+              desc: "Curate personalized collections. Group books by genre, mood, favorites, or 'Did Not Finish'.",
+              icon: <Library className="w-8 h-8 text-primary" />,
+            },
+            {
+              title: "Endless Discovery",
+              desc: "Search millions of titles from global databases and find recommendations just for you.",
+              icon: <Compass className="w-8 h-8 text-primary" />,
+            },
+          ].map((uvp, i) => (
+            <div key={i} className="p-8 md:p-10 rounded-[2rem] bg-white border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group justify-center items-center flex flex-col">
+              <div className="w-16 h-16 mb-6 bg-primary/10 rounded-2xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">{uvp.icon}</div>
+              <h3 className="text-xl md:text-2xl font-bold mb-3 text-text">{uvp.title}</h3>
+              <p className="text-gray-500 leading-relaxed">{uvp.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* How to Section */}
-      <section className="py-16 md:py-24 max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-8 lg:gap-16">
-        <div className="w-full md:w-1/2 h-100 aspect-square flex items-center justify-center">
-          <div className="w-full h-full bg-[url('/images/bookshelf.jpg')] bg-cover bg-center rounded-4xl shadow-xl border-2 border-background/15"></div>
-        </div>
-        <div className="md:w-1/2">
-          <span className="text-primary font-bold tracking-widest uppercase text-sm mb-2 block text-center md:text-start">How To Organize Your Shelves</span>
-          <h2 className="font-heading text-2xl lg:text-4xl font-bold mb-8 text-text text-center md:text-start">Start Managing Your Reading</h2>
-          <ul className="space-y-6">
-            <li className="flex gap-3 md:gap-6 items-start">
-              <span className="bg-primary text-white w-10 h-10 rounded-xl flex items-center justify-center font-bold shrink-0 shadow-md">1</span>
-              <div>
-                <h4 className="font-bold text-base md:text-lg mb-1">Find Your Favorite Books</h4>
-                <p className="text-gray-500 text-justify text-sm md:text-base">Search millions of books from the global database in seconds.</p>
-              </div>
-            </li>
-            <li className="flex gap-3 md:gap-6 items-start">
-              <span className="bg-primary text-white w-10 h-10 rounded-xl flex items-center justify-center font-bold shrink-0 shadow-md">2</span>
-              <div>
-                <h4 className="font-bold text-base md:text-lg mb-1">Create Custom Shelves</h4>
-                <p className="text-gray-500 text-justify text-sm md:text-base">Organize books by genre, mood, or your personal reading goals.</p>
-              </div>
-            </li>
-            <li className="flex gap-3 md:gap-6 items-start">
-              <span className="bg-primary text-white w-10 h-10 rounded-xl flex items-center justify-center font-bold shrink-0 shadow-md">3</span>
-              <div>
-                <h4 className="font-bold text-base md:text-lg mb-1">Track Your Progress</h4>
-                <p className="text-gray-500 text-justify text-sm md:text-base">Update the pages you read and watch your progress grow with clear completion percentages.</p>
-              </div>
-            </li>
-          </ul>
+      <section className="md:max-w-5xl mx-auto px-4 sm:px-6 pb-20 md:pb-32">
+        <div className="bg-gradient-to-br from-primary/5 to-accent/10 rounded-[3rem] p-10 md:p-20 relative overflow-hidden text-center border border-primary/10 shadow-inner">
+          <Quote className="absolute top-8 left-8 md:top-12 md:left-12 w-24 h-24 text-primary opacity-10" />
+
+          <div className="relative z-10">
+            <span className="text-primary font-bold tracking-widest uppercase text-xs mb-8 block">Daily Inspiration</span>
+            <blockquote className="max-w-3xl mx-auto">
+              <cite className="text-2xl sm:text-3xl md:text-4xl font-serif text-text leading-tight md:leading-snug">“Reading lets us live in someone else's shoes. Literature builds bridges; it makes our world larger, not smaller.”</cite>
+              <footer className="mt-8 flex items-center justify-center gap-4">
+                <div className="w-10 h-0.5 bg-primary/30"></div>
+                <p className="font-bold text-text uppercase tracking-widest text-sm">R.F. Kuang, Yellowface</p>
+                <div className="w-10 h-0.5 bg-primary/30"></div>
+              </footer>
+            </blockquote>
+          </div>
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-16 md:py-24 bg-white border-t border-gray-100">
+      <section className="py-20 md:py-28 bg-text text-background rounded-t-[3rem] md:rounded-t-[5rem]">
+        <div className="max-w-7xl mx-auto px-6 mb-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+          <div className="max-w-xl">
+            <span className="text-background/60 font-bold tracking-widest uppercase text-xs mb-2 block">Trending Now</span>
+            <h2 className="font-heading text-4xl md:text-5xl font-bold mb-4">Community Favorites</h2>
+            <p className="text-background/80 text-sm md:text-base">Swipe through the most talked-about books making waves across the internet right now.</p>
+          </div>
+          <Link href="/explore" className="group flex items-center gap-2 text-background hover:text-primary transition-colors font-semibold border-b border-background/30 hover:border-primary pb-1">
+            Explore Full Catalog <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </div>
+
+        <div className="flex w-full overflow-x-auto gap-6 px-6 md:px-12 pb-8 snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden">
+          {carouselBooks?.map((book: any, i: number) => (
+            <div key={i} className="w-32 md:w-44 shrink-0 group cursor-pointer snap-start">
+              <div className="relative overflow-hidden rounded-2xl shadow-xl border border-white/10 aspect-[2/3] mb-4 bg-gray-800">
+                <img src={book.cover_url || "/images/img-placeholder.jpeg"} alt={book.title} className="w-full h-full object-cover group-hover:scale-110 transition duration-700 ease-in-out" loading="lazy" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
+                  <span className="text-white text-xs font-bold bg-primary/90 px-3 py-1.5 rounded-full backdrop-blur-sm">View Details</span>
+                </div>
+              </div>
+              <h4 className="text-sm md:text-base font-bold truncate text-white">{book.title}</h4>
+              <p className="text-xs text-background/60 truncate mt-1">{book.author}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="py-20 md:py-32 max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-12 lg:gap-20">
+        <div className="w-full md:w-1/2 relative">
+          <div className="aspect-square bg-[url('/images/bookshelf.jpg')] bg-cover bg-center rounded-2xl shadow-2xl relative z-10"></div>
+          <div className="absolute top-10 -left-10 w-full h-full bg-primary/10 rounded-[3rem] -z-10"></div>
+        </div>
+
+        <div className="w-full md:w-1/2">
+          <span className="text-primary font-bold tracking-widest uppercase text-xs mb-3 block">Simple Process</span>
+          <h2 className="font-heading text-3xl md:text-5xl font-bold mb-10 text-text leading-tight">Start Building Your Perfect Library</h2>
+
+          <div className="space-y-8">
+            {[
+              { title: "Find Your Books", desc: "Search through millions of global titles instantly and add them to your account." },
+              { title: "Create Custom Shelves", desc: "Organize your collection by genre, reading status, or your personal vibe." },
+              { title: "Track Your Progress", desc: "Update your daily pages and watch your reading stats grow over time." },
+            ].map((step, index) => (
+              <div key={index} className="flex gap-5 group">
+                <div className="flex flex-col items-center">
+                  <div className="bg-white border-2 border-primary/20 text-primary w-12 h-12 rounded-2xl flex items-center justify-center font-bold text-lg shadow-sm group-hover:bg-primary group-hover:text-white transition-colors">
+                    {index + 1}
+                  </div>
+                  {index !== 2 && <div className="w-0.5 h-full bg-primary/10 mt-3 rounded-full"></div>}
+                </div>
+                <div className="pb-8">
+                  <h4 className="font-bold text-xl mb-2 text-text group-hover:text-primary transition-colors">{step.title}</h4>
+                  <p className="text-gray-500 leading-relaxed">{step.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 md:py-32 bg-gray-50" id="faq">
         <div className="max-w-3xl mx-auto px-6">
-          <div className="text-center mb-6 md:mb-12">
-            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-text">Frequently Asked Questions</h2>
-            <p className="text-gray-500">Quick answers to common questions.</p>
+          <div className="text-center mb-12">
+            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-text">Any Questions?</h2>
+            <p className="text-gray-500">Everything you need to know about TaleTrack.</p>
           </div>
 
           <div className="space-y-4">
-            <details className="bg-gray-50 p-6 rounded-2xl border border-gray-100 group cursor-pointer">
-              <summary className="font-bold list-none flex justify-between items-center text-lg text-text">
-                Is TaleTrack completely free?
-                <span className="group-open:rotate-180 transition-transform duration-300 text-primary">▼</span>
-              </summary>
-              <p className="mt-4 text-gray-600 leading-relaxed border-t border-gray-200 pt-4">Yes. Core features such as book discovery, unlimited shelves, and reading progress tracking are completely free to use.</p>
-            </details>
-
-            <details className="bg-gray-50 p-6 rounded-2xl border border-gray-100 group cursor-pointer">
-              <summary className="font-bold list-none flex justify-between items-center text-lg text-text">
-                Where does the book data come from?
-                <span className="group-open:rotate-180 transition-all duration-300 text-primary">▼</span>
-              </summary>
-              <p className="mt-4 text-gray-600 leading-relaxed border-t border-gray-200 pt-4">
-                TaleTrack integrates directly with the Google Books API, providing access to millions of books from around the world with continuously updated information.
-              </p>
-            </details>
+            {[
+              {
+                q: "Is TaleTrack completely free?",
+                a: "Yes! Core features such as discovering books, creating unlimited custom shelves, and tracking your reading progress are 100% free to use.",
+              },
+              {
+                q: "Where does the book data come from?",
+                a: "We integrate directly with the Google Books API. This gives you access to a massive, continuously updated global database of literature.",
+              },
+              {
+                q: "Can I review books here?",
+                a: "Currently, TaleTrack focuses on tracking and organizing. However, comprehensive review and community rating systems are in our roadmap for future updates!",
+              },
+            ].map((faq, i) => (
+              <details key={i} className="bg-white p-6 md:p-8 rounded-2xl border border-gray-100 shadow-sm group cursor-pointer [&_summary::-webkit-details-marker]:hidden">
+                <summary className="font-bold flex justify-between items-center text-lg text-text list-none">
+                  {faq.q}
+                  <span className="bg-primary/10 p-2 rounded-full text-primary group-open:rotate-180 transition-transform duration-300">
+                    <ChevronDown className="w-5 h-5" />
+                  </span>
+                </summary>
+                <p className="mt-6 text-gray-500 leading-relaxed border-t border-gray-100 pt-6 animate-fade-in-up">{faq.a}</p>
+              </details>
+            ))}
           </div>
         </div>
       </section>

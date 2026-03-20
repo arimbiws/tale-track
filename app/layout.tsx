@@ -15,7 +15,10 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   title: "TaleTrack",
-  description: "Track your tales, connect your pages.",
+  description: "Organize, track, and discover your next favorite book with TaleTrack.",
+  icons: {
+    icon: "/logo/icon-taletrack.png",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

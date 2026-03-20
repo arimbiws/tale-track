@@ -63,7 +63,7 @@ export default function SignupPage() {
         <div className="p-8 sm:p-10">
           <div className="text-center mb-8">
             <Link href="/" className="inline-block mb-3 group">
-              <img src="/logo/taletrack-logo.png" alt="TaleTrack Logo" className="h-15 w-auto mx-auto group-hover:scale-105 transition-transform" />
+              <img src="/logo/logo-taletrack.png" alt="TaleTrack Logo" className="h-15 w-auto mx-auto group-hover:scale-105 transition-transform" />
             </Link>
             <h2 className="text-2xl font-heading font-bold text-text mb-2">Start Your Adventure</h2>
             <p className="text-sm text-text/60">Create an account to track your first read.</p>

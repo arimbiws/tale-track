@@ -1,4 +1,3 @@
-// lib/mail.ts
 import nodemailer from "nodemailer";
 
 const domain = process.env.NEXTAUTH_URL || "http://localhost:3000";
