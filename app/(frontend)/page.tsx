@@ -69,7 +69,7 @@ export default async function LandingPage() {
 
           <div className="relative z-10">
             <blockquote className="max-w-3xl mx-auto">
-              <cite className="text-2xl sm:text-3xl md:text-4xl font-serif text-text leading-tight md:leading-snug">“Reading lets us live in someone else's shoes. Literature builds bridges; it makes our world larger, not smaller.”</cite>
+              <cite className="text-xl sm:text-2xl md:text-4xl font-serif text-text leading-tight md:leading-snug">“Reading lets us live in someone else's shoes. Literature builds bridges; it makes our world larger, not smaller.”</cite>
               <footer className="mt-8 flex items-center justify-center gap-4">
                 <div className="w-10 h-0.5 bg-primary/30"></div>
                 <p className="font-bold text-text uppercase tracking-widest text-sm">R.F. Kuang, Yellowface</p>
