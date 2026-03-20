@@ -272,9 +272,9 @@ export default function ShelvesClient({ initialShelves }: { initialShelves: any[
                             setEditPagesRead(item.pages_read || 0);
                             setEditStatus(item.status);
                           }}
-                          className="min-w-[160px] max-w-[160px] sm:min-w-[180px] sm:max-w-[180px] group snap-start relative cursor-pointer"
+                          className="min-w-40 max-w-40 sm:min-w-45 sm:max-w-45 group snap-start relative cursor-pointer"
                         >
-                          <div className="aspect-[2/3] w-full mb-4 rounded-xl overflow-hidden bg-background shadow-[3px_3px_10px_rgba(0,0,0,0.1)] relative transform transition-transform duration-300 group-hover:-translate-y-2 group-hover:shadow-[5px_15px_20px_rgba(0,0,0,0.15)] border border-gray-200/50">
+                          <div className="aspect-2/3 w-full mb-4 rounded-xl overflow-hidden bg-background shadow-[3px_3px_10px_rgba(0,0,0,0.1)] relative transform transition-transform duration-300 group-hover:-translate-y-2 group-hover:shadow-[5px_15px_20px_rgba(0,0,0,0.15)] border border-gray-200/50">
                             <div className="absolute left-0 top-0 bottom-0 w-2 bg-black/10 z-10"></div>
                             <img src={item.book.cover_url || "/images/no-cover.png"} alt={item.book.title} className="w-full h-full object-cover" />
                             <div className="absolute top-2 right-2 z-20">
@@ -395,7 +395,7 @@ export default function ShelvesClient({ initialShelves }: { initialShelves: any[
       )}
 
       {shelfToDelete && (
-        <div className="fixed inset-0 z-[70] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+        <div className="fixed inset-0 z-70 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
           <div className="bg-white rounded-3xl p-8 w-full max-w-sm shadow-2xl text-center animate-in fade-in zoom-in duration-200">
             <div className="w-20 h-20 bg-danger/10 text-danger rounded-full flex items-center justify-center mx-auto mb-6 text-3xl">
               <AlertTriangle className="w-10 h-10" />
@@ -450,7 +450,7 @@ export default function ShelvesClient({ initialShelves }: { initialShelves: any[
                 <select
                   name="newShelfId"
                   defaultValue={selectedItem.currentShelfId}
-                  className="border border-gray-200 rounded-xl p-3.5 bg-background text-sm font-semibold text-text focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none appearance-none pr-10 bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%236b7280%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E')] bg-no-repeat bg-[position:right_1rem_center] bg-[length:1.2em_1.2em]"
+                  className="border border-gray-200 rounded-xl p-3.5 bg-background text-sm font-semibold text-text focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none appearance-none pr-10 bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%236b7280%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E')] bg-no-repeat bg-position-[right_1rem_center] bg-size-[1.2em_1.2em]"
                 >
                   <option value={selectedItem.currentShelfId}>{selectedItem.currentShelfName}</option>
 
@@ -471,7 +471,7 @@ export default function ShelvesClient({ initialShelves }: { initialShelves: any[
                     name="status"
                     value={editStatus}
                     onChange={handleStatusChange}
-                    className="border border-gray-200 rounded-xl p-3.5 bg-background text-sm font-semibold text-text focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none appearance-none pr-10 bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%236b7280%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E')] bg-no-repeat bg-[position:right_1rem_center] bg-[length:1.2em_1.2em]"
+                    className="border border-gray-200 rounded-xl p-3.5 bg-background text-sm font-semibold text-text focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none appearance-none pr-10 bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%236b7280%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E')] bg-no-repeat bg-position-[right_1rem_center] bg-size-[1.2em_1.2em]"
                   >
                     <option value="TO_READ">Want To Read</option>
                     <option value="READING">Reading</option>
@@ -514,7 +514,7 @@ export default function ShelvesClient({ initialShelves }: { initialShelves: any[
       )}
 
       {itemToDelete && (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+        <div className="fixed inset-0 z-60 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
           <div className="bg-white rounded-3xl p-8 w-full max-w-sm shadow-2xl text-center animate-in fade-in zoom-in duration-200">
             <div className="w-20 h-20 bg-danger/10 text-danger rounded-full flex items-center justify-center mx-auto mb-6 text-3xl">
               <Trash2 className="w-10 h-10" />

@@ -1,69 +1,91 @@
-# 📚 TaleTrack - Digital Library & Reading Tracker
+<div align="center">
+  <img src="public/logo/logo-taletrack.png" alt="TaleTrack Logo" height="100"/>
 
-TaleTrack adalah aplikasi pelacak bacaan dan perpustakaan digital modern yang dibangun menggunakan **Next.js 15**, **React**, dan **Tailwind CSS**. Aplikasi ini memungkinkan pengguna untuk mengeksplorasi buku-buku terbaru, menyimpan buku ke dalam rak kustom, dan melacak progres membaca mereka secara real-time.
+**Track your tales, connect your pages.**
 
-## ✨ Fitur Utama
+A personal digital catalog to track your reading progress, manage your dream bookshelves, and discover your next unforgettable story.
 
-- **Eksplorasi Buku Tanpa Batas:** Pencarian buku terintegrasi langsung dengan _Google Books API_.
-- **Filter Pintar & Pagination:** Cari berdasarkan _keyword_, genre, atau temukan buku _trending_ (Booktok/Bookstagram) dengan sistem navigasi halaman.
-- **Manajemen Rak Kustom (Shelves):** Buat rak tak terbatas (misal: "Favorit", "Fiksi Ilmiah", "Sedang Dibaca").
-- **Reading Tracker:** Lacak status bacaan (_Want to Read_, _Reading_, _Finished_) beserta _progress bar_ persentase halaman.
-- **Desain UI/UX Modern:** Animasi mulus, desain responsif, _glassmorphism navbar_, dan interaksi berbasis _Modal_ (tanpa _reload_ halaman berkat Next.js Server Actions).
+[![Next.js](https://img.shields.io/badge/Next.js-16-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)](https://www.prisma.io/)
+[![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com/)
 
-## 🛠️ Tech Stack
+</div>
 
-- **Framework:** [Next.js](https://nextjs.org/) (App Router)
-- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
-- **Database:** PostgreSQL (atau MySQL) via [Prisma ORM](https://www.prisma.io/)
-- **External API:** [Google Books API](https://developers.google.com/books)
+<br />
 
-## 🚀 Cara Menjalankan Proyek Secara Lokal
+## Preview
 
-### 1. Prasyarat
+<p align="center">
+  <img src="public/screenshots/screenshot-home.png" alt="Home Preview" width="33%" />
+  <img src="public/screenshots/screenshot-explore.png" alt="Explore Page Preview" width="33%" />
+  <img src="public/screenshots/screenshot-shelves.png" alt="Shelves Page Preview" width="33%" />
+</p>
 
-Pastikan Anda telah menginstal [Node.js](https://nodejs.org/) dan NPM/Yarn.
+## Features
 
-### 2. Kloning Repositori
+- **Endless Discovery:** Search millions of titles from global databases via the Google Books API. Browse by trending books, authors, or your favorite genres.
+- **Custom Bookshelves:** Curate personalized collections. Group books by genre, mood, favorites, or create your own custom categories.
+- **Smart Reading Tracker:** Log your daily pages, track your reading progress with dynamic progress bars, and update book statuses (Want to Read, Reading, Finished).
+- **Secure Authentication:** Seamless login/signup experience using Auth.js (NextAuth v5), including email password resets and secure session management.
+- **PWA Ready (Offline Support):** Install TaleTrack on your mobile device as a Progressive Web App. Cached pages remain accessible even when you lose your internet connection.
+- **Modern & Responsive UI:** A beautifully crafted, fully responsive design using Tailwind CSS with smooth animations and intuitive interactions.
 
-\`\`\`bash
-git clone https://github.com/username-anda/taletrack.git
-cd taletrack
-\`\`\`
+## Tech Stack
 
-### 3. Instalasi Dependensi
+**Frontend:**
 
-\`\`\`bash
-npm install
+- [Next.js](https://nextjs.org/) (App Router, Turbopack)
+- [React](https://reactjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Lucide React](https://lucide.dev/) (Icons)
+- [Next PWA](https://github.com/ducanh2912/next-pwa) (Service Worker & Offline Support)
 
-# atau
+**Backend & Database:**
 
-yarn install
-\`\`\`
+- [Prisma ORM](https://www.prisma.io/)
+- [Supabase](https://supabase.com/) (PostgreSQL Database)
+- [Auth.js / NextAuth v5](https://authjs.dev/) (Authentication)
+- [Nodemailer](https://nodemailer.com/) (Password Reset Emails)
 
-### 4. Konfigurasi Environment Variables
+**External APIs:**
 
-Buat file `.env` di direktori _root_ dan sesuaikan nilainya:
-\`\`\`env
-DATABASE_URL="postgresql://user:password@localhost:5432/taletrack"
-GOOGLE_BOOKS_API_KEY="AIzaSyYourGoogleBooksAPIKeyHere"
-\`\`\`
+- [Google Books API](https://developers.google.com/books)
 
-### 5. Migrasi Database
+## Project Structure
 
-Jalankan perintah Prisma untuk menyinkronkan skema ke database Anda:
-\`\`\`bash
-npx prisma generate
-npx prisma db push
-\`\`\`
-_(Opsional: Anda bisa menggunakan `npx prisma studio` untuk melihat/mengisi data dummy user)._
+Project Structure
 
-### 6. Jalankan Development Server
+```text
+tale-track/
+├── app/
+│   ├── (frontend)/
+│   │   ├── explore/
+│   │   ├── shelves/
+│   │   ├── contact/
+│   │   └── page.tsx
+│   ├── actions/
+│   ├── api/
+│   ├── ~offline/
+│   ├── layout.tsx
+│   └── globals.css
+├── components/
+├── lib/
+├── public/
+├── prisma/
+├── middleware.ts
+└── next.config.ts
+```
 
-\`\`\`bash
-npm run dev
-\`\`\`
-Aplikasi sekarang dapat diakses di [http://localhost:3000](http://localhost:3000).
+## Future Improvements
 
----
+- Community Book Reviews
+- Reading Challenges
+- Social Features
 
-Dibuat dengan ❤️ untuk para pencinta buku.
+<hr/>
+
+<div align="center">
+<p>Made with ♡ by a reader, for readers.</p>
+</div>

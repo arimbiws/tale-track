@@ -9,7 +9,7 @@ export default async function LandingPage() {
   return (
     <main className="min-h-screen">
       <section className="relative h-screen min-h-150 flex items-center justify-center bg-[url('/images/bg-hero.jpg')] bg-cover bg-center overflow-hidden">
-        <div className="absolute inset-0 bg-linear-to-b from-black/70 via-black/40 to-background/25 z-0"></div>
+        <div className="absolute inset-0 bg-black/40 z-0"></div>
 
         <div className="relative z-10 max-w-5xl mx-auto px-6 text-center text-white pt-10">
           <span className="inline-block py-1 px-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs md:text-sm font-semibold tracking-wider mb-4 animate-fade-in-up">Track your tales, connect your pages</span>
@@ -68,7 +68,6 @@ export default async function LandingPage() {
           <Quote className="absolute top-8 left-8 md:top-12 md:left-12 w-24 h-24 text-primary opacity-10" />
 
           <div className="relative z-10">
-            <span className="text-primary font-bold tracking-widest uppercase text-xs mb-8 block">Daily Inspiration</span>
             <blockquote className="max-w-3xl mx-auto">
               <cite className="text-2xl sm:text-3xl md:text-4xl font-serif text-text leading-tight md:leading-snug">“Reading lets us live in someone else's shoes. Literature builds bridges; it makes our world larger, not smaller.”</cite>
               <footer className="mt-8 flex items-center justify-center gap-4">
@@ -127,7 +126,7 @@ export default async function LandingPage() {
             ].map((step, index) => (
               <div key={index} className="flex gap-5 group">
                 <div className="flex flex-col items-center">
-                  <div className="bg-white border-2 border-primary/20 text-primary w-12 h-12 rounded-2xl flex items-center justify-center font-bold text-lg shadow-sm group-hover:bg-primary group-hover:text-white transition-colors">
+                  <div className="bg-white border border-primary/20 text-primary w-12 h-12 rounded-2xl flex items-center justify-center font-bold text-lg shadow-sm group-hover:bg-primary group-hover:text-white transition-colors">
                     {index + 1}
                   </div>
                   {index !== 2 && <div className="w-0.5 h-full bg-primary/10 mt-3 rounded-full"></div>}
@@ -142,7 +141,7 @@ export default async function LandingPage() {
         </div>
       </section>
 
-      <section className="py-20 md:py-32 bg-gray-50" id="faq">
+      <section className="py-20 md:py-32 bg-background" id="faq">
         <div className="max-w-3xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-text">Any Questions?</h2>
