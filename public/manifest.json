@@ -1,0 +1,36 @@
+{
+  "name": "TaleTrack - Digital Library",
+  "short_name": "TaleTrack",
+  "description": "Organize, track, and discover your next favorite book with TaleTrack.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f8fafc",
+  "theme_color": "#519a66",
+  "icons": [
+    {
+      "purpose": "any maskable",
+      "sizes": "48x48",
+      "src": "/taletrack_icon_x48.png",
+      "type": "image/png"
+    },
+    {
+      "purpose": "any maskable",
+      "sizes": "128x128",
+      "src": "/taletrack_icon_x128.png",
+      "type": "image/png"
+    },
+    {
+      "purpose": "any maskable",
+      "sizes": "192x192",
+      "src": "/taletrack_icon_x192.png",
+      "type": "image/png"
+    },
+    {
+      "purpose": "any maskable",
+      "sizes": "512x512",
+      "src": "/taletrack_icon_x512.png",
+      "type": "image/png"
+    }
+  ]
+}

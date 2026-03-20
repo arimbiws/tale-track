@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { searchBooks } from "@/lib/google-books";
 import { BookOpen, Library, Compass, ArrowRight, Quote, ChevronDown } from "lucide-react";
+import Image from "next/image";
 
 export default async function LandingPage() {
   const { books: carouselBooks } = await searchBooks("booktok OR bookstagram bestseller", 1, 12);
@@ -96,7 +97,7 @@ export default async function LandingPage() {
           {carouselBooks?.map((book: any, i: number) => (
             <div key={i} className="w-32 md:w-44 shrink-0 group cursor-pointer snap-start">
               <div className="relative overflow-hidden rounded-2xl shadow-xl border border-white/10 aspect-[2/3] mb-4 bg-gray-800">
-                <img src={book.cover_url || "/images/img-placeholder.jpeg"} alt={book.title} className="w-full h-full object-cover group-hover:scale-110 transition duration-700 ease-in-out" loading="lazy" />
+                <Image src={book.cover_url || "/images/img-placeholder.jpeg"} alt={book.title} className="w-full h-full object-cover group-hover:scale-110 transition duration-700 ease-in-out" loading="lazy" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
                   <span className="text-white text-xs font-bold bg-primary/90 px-3 py-1.5 rounded-full backdrop-blur-sm">View Details</span>
                 </div>

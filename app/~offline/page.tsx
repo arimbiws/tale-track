@@ -1,3 +1,5 @@
+"use client";
+
 import { WifiOff, RotateCcw } from "lucide-react";
 import Link from "next/link";
 
@@ -10,7 +12,7 @@ export default function OfflinePage() {
 
       <h1 className="font-heading text-4xl font-bold text-text mb-4">You are offline</h1>
 
-      <p className="text-gray-500 max-w-md mb-10 leading-relaxed">It seems you've lost your internet connection. Some features of TaleTrack are currently unavailable, but your cached pages are safe!</p>
+      <p className="text-gray-500 max-w-md mb-10 leading-relaxed">It seems you have lost your internet connection. Some features of TaleTrack are currently unavailable.</p>
 
       <div className="flex gap-4">
         <button onClick={() => window.location.reload()} className="flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full font-bold hover:bg-secondary transition-colors shadow-lg shadow-primary/30">

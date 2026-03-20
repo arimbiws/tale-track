@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
@@ -13,11 +13,17 @@ const playfair = Playfair_Display({
   variable: "--font-heading",
 });
 
+export const viewport: Viewport = {
+  themeColor: "#519a66",
+};
+
 export const metadata: Metadata = {
   title: "TaleTrack",
   description: "Organize, track, and discover your next favorite book with TaleTrack.",
+  manifest: "/manifest.json",
   icons: {
     icon: "/logo/icon-taletrack.png",
+    apple: "/taletrack_icon_x192.png",
   },
 };
 

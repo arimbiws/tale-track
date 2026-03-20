@@ -4,6 +4,7 @@ import Link from "next/link";
 import BookCard from "@/components/BookCard";
 import SearchForm from "@/components/SearchForm";
 import { auth } from "@/auth";
+import { Search } from "lucide-react";
 
 export default async function ExplorePage({ searchParams }: { searchParams: Promise<{ q?: string; genre?: string; page?: string }> }) {
   const resolvedParams = await searchParams;
@@ -68,7 +69,9 @@ export default async function ExplorePage({ searchParams }: { searchParams: Prom
           books.map((book: any) => <BookCard key={book.id} book={book} shelves={shelves} isLoggedIn={isLoggedIn} />)
         ) : (
           <div className="col-span-full text-center py-20 bg-white rounded-3xl border border-gray-100 shadow-sm">
-            <p className="text-6xl mb-4">🔍</p>
+            <p className="text-6xl mb-4">
+              <Search className="h-8 w-8 text-primary" />
+            </p>
             <h3 className="text-xl font-bold text-gray-800">Buku tidak ditemukan</h3>
             <p className="text-gray-500 mt-2">Coba gunakan kata kunci atau nama penulis yang berbeda.</p>
           </div>
